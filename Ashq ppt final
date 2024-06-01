@@ -1,0 +1,103 @@
+# Create a new presentation object
+prs = Presentation()
+
+# Function to add a slide with title and content
+def add_slide(prs, title, content, logo_path=None):
+    slide_layout = prs.slide_layouts[1]  # Title and Content layout
+    slide = prs.slides.add_slide(slide_layout)
+    title_placeholder = slide.shapes.title
+    content_placeholder = slide.placeholders[1]
+    
+    title_placeholder.text = title
+    content_placeholder.text = content
+    
+    if logo_path:
+        slide.shapes.add_picture(logo_path, Inches(0), Inches(4.5), width=Inches(2))
+
+# Define the premium and elegant color scheme
+title_color = RGBColor(47, 79, 79)  # Dark Slate Gray
+content_color = RGBColor(169, 169, 169)  # Dark Gray
+
+# Title Slide
+slide_layout = prs.slide_layouts[0]  # Title Slide layout
+slide = prs.slides.add_slide(slide_layout)
+title_placeholder = slide.shapes.title
+subtitle_placeholder = slide.placeholders[1]
+title_placeholder.text = "Welcome to ASHQ PRODUCTION"
+subtitle_placeholder.text = "Your One-Stop Solution for Digital Marketing, Content Creation, and More"
+slide.shapes.add_picture(logo_path, Inches(0), Inches(5), width=Inches(2))
+set_color_scheme(slide, title_color, content_color)
+
+# About Us Slide
+about_us_content = ("Our mission is to be the best decision people and businesses make.\n\n"
+                    "ASHQ PRODUCTION is dedicated to delivering high-quality digital marketing and content creation services. "
+                    "We specialize in helping our clients build their brands and connect with their audiences in meaningful ways.")
+slide = add_slide(prs, "About ASHQ PRODUCTION", about_us_content, logo_path)
+set_color_scheme(prs.slides[-1], title_color, content_color)
+
+# Our Services Slide
+services_content = ("Digital Marketing\n"
+                    "Content Creation\n"
+                    "Voiceover and Dubbing\n"
+                    "Cinematography and Photography\n"
+                    "Graphic Design\n"
+                    "Pre-Wedding, Post-Wedding, and Wedding Shoots")
+slide = add_slide(prs, "Our Services", services_content)
+set_color_scheme(prs.slides[-1], title_color, content_color)
+
+# Digital Marketing Slide
+digital_marketing_content = ("Social Media Management\n"
+                             "SEO\n"
+                             "Email Marketing")
+slide = add_slide(prs, "Digital Marketing", digital_marketing_content)
+set_color_scheme(prs.slides[-1], title_color, content_color)
+
+# Content Creation Slide
+content_creation_content = ("Blog Posts\n"
+                            "Video Content")
+slide = add_slide(prs, "Content Creation", content_creation_content)
+set_color_scheme(prs.slides[-1], title_color, content_color)
+
+# Voiceover and Dubbing Slide
+voiceover_dubbing_content = ("Voiceover: Commercials, Narration, E-learning, Audiobooks\n"
+                             "Dubbing: Films, Series, Animation")
+slide = add_slide(prs, "Voiceover and Dubbing", voiceover_dubbing_content)
+set_color_scheme(prs.slides[-1], title_color, content_color)
+
+# Cinematography and Photography Slide
+cinematography_photography_content = ("Cinematography: Commercials, Short Films, Corporate Videos, Events\n"
+                                      "Photography: Product Shoots, Portraits, Events, Corporate Photography")
+slide = add_slide(prs, "Cinematography and Photography", cinematography_photography_content)
+set_color_scheme(prs.slides[-1], title_color, content_color)
+
+# Graphic Design Slide
+graphic_design_content = ("Posters\n"
+                          "Thumbnails\n"
+                          "Logos")
+slide = add_slide(prs, "Graphic Design", graphic_design_content)
+set_color_scheme(prs.slides[-1], title_color, content_color)
+
+# Wedding Services Slide
+wedding_services_content = ("Pre-Wedding Shoots\n"
+                            "Wedding Shoots\n"
+                            "Post-Wedding Shoots")
+slide = add_slide(prs, "Wedding Services", wedding_services_content)
+set_color_scheme(prs.slides[-1], title_color, content_color)
+
+# Contact Us Slide
+contact_us_content = ("Email: ashqproduction@gmail.com\n"
+                      "Phone: +91 6006387113\n"
+                      "Instagram: @ashqproduction\n"
+                      "Facebook: ASHQ Production")
+slide = add_slide(prs, "Contact Us", contact_us_content, logo_path)
+set_color_scheme(prs.slides[-1], title_color, content_color)
+
+# Thank You Slide
+slide = add_slide(prs, "Thank You!", "We look forward to working with you!", logo_path)
+set_color_scheme(prs.slides[-1], title_color, content_color)
+
+# Save the presentation
+pptx_path = "/mnt/data/ASHQ_Production_Presentation_v2.pptx"
+prs.save(pptx_path)
+
+pptx_path
